@@ -13,7 +13,7 @@ Most of us have been using `suspend` functions with _[Retrofit](https://square.g
 
 >Suspending functions are at the center of everything coroutines. A suspending function is simply a function that can be paused and resumed at a later time. They can execute a long running operation and wait for it to complete without blocking.
 
-All this is achieved, without even making any [sphagetti code](https://www.reddit.com/r/ProgrammerHumor/comments/chgnd3/callback_hell/) for handling asynchronousy.
+All this is achieved, without even making any [spaghetti code](https://www.reddit.com/r/ProgrammerHumor/comments/chgnd3/callback_hell/) for handling asynchronousy.
 Just look at this code. So concise and elegant.
 
 {% highlight kotlin %}
