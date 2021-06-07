@@ -60,19 +60,19 @@ Let us also consider that this app is an Android app, having a minimal UI design
 ```kotlin
 class MinimalDesigner : Designer {
     override fun design() {
-        println("I love minimal designs!")
+        println("🧑‍🎨 Designed by a minimal designer.")
     }
 }
 
 class AndroidDeveloper : Developer {
     override fun code() {
-        println("I develop Android Apps using Kotlin!")
+        println("🧑‍💻 Developed this android app developed in Kotlin.")
     }
 }
 
 class AutomationTester : Tester {
     override fun test() {
-        println("I use automation tools to test Android apps!")
+        println("✅ All test cases passed. Tested using automation tools.")
     }
 }
 ```
@@ -102,11 +102,11 @@ class ProductOwner(
     }
     
     fun gatherRequirements() {
-        println("Gather all the requirements.")
+        println("🙇 Gather all the requirements.")
     }
     
     fun publishApp() {
-        println("Publish app on the Play Store")
+        println("🚀 Publish app on the Play Store.")
     }
 }
 
@@ -152,11 +152,11 @@ class ProductOwner(
 ) : Designer by designer, Developer by developer, Tester by tester {
 
     fun gatherRequirements() {
-        println("Gather all the requirements.")
+        println("🙇 Gather all the requirements.")
     }
     
     fun publishApp() {
-        println("Publish app on the Play Store")
+        println("🚀 Publish app on the Play Store.")
     }
 }
 
