@@ -1,6 +1,6 @@
 ---
 title: Suspension in Callbacks
-cover-image: suspension_bridge.jpg
+cover-image: chain.jpg
 ---
 
 Using suspend functions, we can make asynchronous code to look alike any another synchronous code.
@@ -51,7 +51,7 @@ val callback = object: Callback<Foo> {
   override onComplete(result: Foo) {
     onFetchingComplete.invoke(result)
   }
-  
+
   override onError(e: Exception) {
     onFetchingError.invoke(e)
   }
@@ -80,7 +80,7 @@ suspend fun getResult() : Result<Foo> {
         continuation.resumeWithException(e as Throwable)
       }
     }
-
+    
     SomeLibrary.setCallback(callback)
     SomeLibrary.getResult()
   }
