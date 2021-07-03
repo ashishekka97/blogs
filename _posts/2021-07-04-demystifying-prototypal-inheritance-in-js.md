@@ -1,12 +1,13 @@
 ---
 title: Demystifying Prototypal Inheritance in JS
-cover-image: suspension_bridge.jpg
-
+cover-image: chain.jpg
 ---
 
 JavaScript objects supports inheritance, but is very different from other languages like Java, Kotlin or C++.
 
 While the latter ones use the `Class`ical inheritance, JavaScript uses something known as Prototypal Inheritance.
+
+<!--more-->
 
 ## What's Prototypal Inheritance? Never heard of it.
 
