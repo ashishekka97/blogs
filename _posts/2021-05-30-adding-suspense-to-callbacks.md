@@ -1,10 +1,10 @@
 ---
 title: Suspension in Callbacks
-cover-image: chain.jpg
+cover-image: suspension_bridge.jpg
 ---
 
 Using suspend functions, we can make asynchronous code to look alike any another synchronous code.
-But what if we can't directly use suspend functions, and are instead dealing with good-old callbacks?
+But what if we can't directly use suspend functions, and are instead dealing with the good-old callbacks?
 
 <!--more-->
 ### Suspend Functions

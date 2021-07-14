@@ -11,7 +11,7 @@ While the latter ones use the `Class`ical inheritance, JavaScript uses something
 
 ## What's Prototypal Inheritance? Never heard of it.
 
-Well, in prototypal inheritance, an object can inherit properties from other objects which act as a prototype for it. This is done via an internal and hidden property - `[[Prototype]]`, which is a reference to either another object or null. This `[[Prototype]]` property can be manipulated using another property - `__proto__`, which is attached automatically every time a new object is created.
+Well, in prototypal inheritance, an object can inherit properties from other objects which are acting as a prototype. This is done via an internal and hidden property - `[[Prototype]]`, which is a reference to either another object or null. This `[[Prototype]]` property can be manipulated using another property - `__proto__`, which is attached automatically every time a new object is created.
 
 Let's clear this with an example:
 
@@ -30,7 +30,7 @@ But how? We never wrote the `length` property in the fruits `Array`. Not only th
 
 ![JavaScript Array Properties]({{ site.baseurl }}/img/2021-07-04-demystifying-prototypal-inheritance-in-js/arrays-properties.png)
 
-It's because `fruits` is a JavaScript `Array`, which is acting as a prototype for it. The `Array.prototype` is attached to `fruits` via the `__proto__` property.
+It's because `fruits` is a JavaScript `Array`, which is acting as a prototype for `fruits`. The `Array.prototype` is attached to `fruits` via the `__proto__` property.
 
 This is evident from the snippet below:
 
@@ -41,7 +41,7 @@ console.log(Array.prototype);
 console.log(fruits.__proto__ === Array.prototype);
 ```
 
-This outputs:
+This will give the print the following output:
 
 ```bash
 [constructor: ƒ, concat: ƒ, copyWithin: ƒ, fill: ƒ, find: ƒ, …]
@@ -51,7 +51,7 @@ true
 
 ## Own Properties vs. Inherited Properties
 
-In the above snippets, we saw that, when we create an `Array` in JS, it automatically inherits all the properties from the `Array` object. Let's check what will happen if we create an `Object` instead with some properties:
+In the above snippets, we saw that, when we create an `Array` in JS, it automatically inherits all the properties from the `Array` object. Let us check, what will happen if we create an `Object` instead with some properties?
 
 ```javascript
 const user = {
@@ -75,17 +75,17 @@ We can see that the `user.job` is the `user`'s *own property*, while `user.toStr
 
 In this case, the JS engine first tries to find the `toString()` method in the `user` object. And since it can't find any `toString()` method in  `user` object, the JS engine then tries to find `toString()` method in the `user`'s prototype, i.e `Object.prototype`.
 
-This is the reason that when we type `user.` in the IDE, the intellisense list downs the `user`'s *own properties* like `name`, `age`, and `job` as well as *inherited properties* like `toString()`, `valueOf()`.
+This is the reason that when we type `user.` in the IDE, the ntelliSense list downs the `user`'s *own properties* like `name`, `age`, and `job` as well as the *inherited properties* like `toString()`, `valueOf()`.
 
-JavaScript does provides an inherited method - `hasOwnProperty(key)` to determine if a particular property is an *inherited property* or if is it's *own property*.
+JavaScript does provides an inherited method - `hasOwnProperty(key)` to determine if a particular property is it's *own property* or an *inherited property*.
 
 ## The prototype chain
 
-JavaScript uses this mechanism to create an inheritance chain till the `Object.prototype` is reached. This chain is known as the *Prototype Chain*.
+JavaScript uses this mechanism to create an inheritance chain until the `Object.prototype` is reached in the hierarchy. This chain is commonly known as the *Prototype Chain*.
 
 > Everything is an `Object` in JavaScript. The arrays, functions. Everything!
 
-The reason why we hear every one say the above line is because:  Every object, function, array will have a prototype chain pointing back to the `Object.prototype`.
+The reason why we hear every one say the above quote is because:  Every object, function and array will have a prototype chain pointing back to the `Object.prototype`.
 
 Have a look at this snippet below:
 
@@ -120,11 +120,11 @@ null
 null
 ```
 
-As we can see here, `fun.__proto__.__proto__` is having a reference to `Object.prototype` and the `__proto__` inside `Object.prototype` is having a reference to `null`, stating that this is the last link in the prototype chain.
+As we can see here, `fun.__proto__.__proto__` is having a reference to `Object.prototype` and the `__proto__` inside `Object.prototype` is having a reference to `null`, stating that this is the last link in the *Prototype Chain*.
 
 ## F.prototype
 
-You must be wondering what `Array.prototype` and `Object.prototype` is? Well, `F.prototype` is nothing but a regular property named "`prototype`" on `F`. We know that we can create a new object in JavaScript using the constructor, like `new F()`.
+You must be wondering, what `Array.prototype` and `Object.prototype` is? Well, `F.prototype` is nothing but a regular property named "`prototype`" on `F`. We know that we can create a new object in JavaScript using the constructor, like `new F()`.
 
 If `F.protoype` is a property, then the `new` operator uses this property to set the `[[Prototype]]` for this new object.
 
@@ -164,7 +164,7 @@ With ES6, `class`es were officially introduced to the JavaScript language. These
 ```javascript
 class Animal {
     legs = 4;
-	
+
 	constructor(name) {
         this.name = name;
     }
@@ -175,7 +175,7 @@ console.log(dog.legs); //4
 console.log(dog instanceof Animal);
 ```
 
-This will create a dog object, with properties like `legs` being inherited from `Animal`. Well the thing is that `class` syntax is just a syntactic sugar on top of prototypal inheritance. The underlying code is pretty similar to the prototypal one written above with same minor changes. Let's have a look at that:
+This will create a `dog` object, with properties like `legs` being inherited from `Animal` object. Well, the thing is, `class` syntax is just a [*syntactic sugar*](https://imgflip.com/i/5gf5gw) on top of prototypal inheritance. The underlying code is pretty similar to the prototypal one written above with some minor changes. Let us have a look on that:
 
 ```javascript
 const animal = {
@@ -195,11 +195,11 @@ console.log(dog instanceof Animal);
 
 ## In a nutshell
 
-Unlike other languages like Java, Kotlin or C++, JavaScript supports prototypal inheritance rather than classical inheritance. The objects in JavaScript, inherit properties from other objects - known as prototypes.
+Unlike other languages like Java, Kotlin or C++, JavaScript supports *Prototypal Inheritance* rather than the *Classical Inheritance*. The objects in JavaScript, inherit properties from other objects - known as *prototypes*.
 
-This lookup for inherited properties by a JS engine is not only restricted to the prototype of an object, but also to the prototype of the prototype, till it reaches `null`, forming a chain known as the *prototype chain*.
+This lookup for inherited properties by a JS engine is not only restricted to the prototype of an object, but also to the prototype of the prototype, until it reaches `null`, forming a chain known as the *prototype chain*.
 
-The ES6 `class`es are nothing but, a syntactic sugar over the prototype based inheritance.
+The ES6 `class`es are nothing but, a *syntactic sugar* over the prototype based inheritance.
 
 While this may look a bit different from the notion of inheritance in other programming languages, it is a very powerful feature and opens limitless possibilities, once understood properly.
 
