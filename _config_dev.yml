@@ -5,10 +5,10 @@ name: Ashish Ekka's Blogs
 description:
 
   # Description of your site. This will show up in google.
-  meta: Hi! I am a Software Engineer @ GlobalLogic. You will find some of my writings here.
+  meta: Yet another blog posting about fun stuff in Software Engineering.
 
   # Description of your site. This will show up on the front page.
-  subtitle: Hi! I am Ashish Ekka. A Software Engineer @ GlobalLogic. You will find some of my writings here.
+  subtitle: Yet another blog posting about fun stuff in Software Engineering.
 
 author:
   name: Ashish Ekka # Change this!
